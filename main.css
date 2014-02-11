@@ -13,7 +13,7 @@ section {
     padding: 5px 0;
 }
 li {
-    background-color: #FFF;
+    background-color: green;
 	border: 1px solid black;
     display: block;
     float: left;
@@ -23,12 +23,13 @@ li {
 }
 li span {
     display: block;
-    background-color: #FFFFFF;
+    /*background-color: #FFFFFF;*/
     width: 40px;
     height: 40px;
     margin: 5px;
-    border-radius: 20px;
+    /*border-radius: 20px;*/
 }
 li.mole span {
-    background-color: #000000;
+    /*background-color: brown;*/
+	background-image:url(images/game/mole.png); 
 }
