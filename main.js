@@ -1,6 +1,7 @@
 var whacAMole = (function () {
     var height = 4,
         width = 7,
+		height = 4,
         initialize,
         li,
         liElements = [],
@@ -9,15 +10,34 @@ var whacAMole = (function () {
         renderMole,
         render,
         stage,
+		setScoreEvent,
+        scoreDiv,
+        score,
         span,
         speed = 750,
         launch,
-        timer
-
+        timer,
+        utils = {
+            id: function (id) {
+                return document.getElementById(id);
+            },
+            getNodeAsInt: function (parent) {
+                return parent.firstChild.nodeValue - 0;
+            },
+            setFirstChildValue: function (parentElem, value) {
+                parentElem.firstChild.nodeValue = value;
+            },
+            setTimer: function (func, ms) {
+                return setInterval(func, ms);
+            }
+        };
+		
     initialize = function () {
         prepare();
         render();
-        launch();
+        launch(); 
+		prepareScreen();
+		setScoreEvent();
     };
 	
 	// prepare the elements on the grid
@@ -25,6 +45,11 @@ var whacAMole = (function () {
         span = document.createElement('span');
         li = document.createElement('li');
         stage = document.getElementsByTagName('ul')[0];
+    };
+	
+    prepareScreen = function () {
+        scoreDiv = utils.id('score');
+        score = utils.getNodeAsInt(scoreDiv);
     };
 	
 	// create the render of the elements
@@ -42,6 +67,18 @@ var whacAMole = (function () {
 	// launch the game
     launch = function () {
         timer = setInterval(renderMole, speed);
+    };
+	
+    setScoreEvent = function () {
+        stage.addEventListener('click', function(e) {
+            if (e.target && 'span' === e.target.nodeName.toLowerCase()) {
+                if ('mole' === e.target.parentNode.className ) {
+                    score += 1;
+                    utils.setFirstChildValue(scoreDiv, score);
+                    e.target.parentNode.className = '';
+                }
+            }
+        }, false);
     };
 
 	// make a mole appear randomly
