@@ -16,6 +16,7 @@ var whacAMole = (function () {
         speed = 750,
         launch,
         timer,
+		speeddown = 75,
         utils = {
             id: function (id) {
                 return document.getElementById(id);
@@ -25,9 +26,6 @@ var whacAMole = (function () {
             },
             setFirstChildValue: function (parentElem, value) {
                 parentElem.firstChild.nodeValue = value;
-            },
-            setTimer: function (func, ms) {
-                return setInterval(func, ms);
             }
         };
 		
@@ -80,6 +78,12 @@ var whacAMole = (function () {
                     score += 1;
                     utils.setFirstChildValue(scoreDiv, score);
                     e.target.parentNode.className = '';
+
+					if (score%10 === 0) {
+						clearInterval(timer);
+						speed -= speeddown;
+						timer = setInterval(renderMole, speed);
+                    }
                 }
             }
         }, false);

@@ -1,15 +1,16 @@
 body {
     background-color: #DE9537;
 }
-p {
-    margin-left: 5px;
-}
 ul {
     padding: 0;
     margin: 0;
+	/* section width must be the same */
+	width:260px;
+	height:312px;
+	border:1px solid black;
 }
 section {
-    width: 280px;
+    width: auto;
     padding: 5px 0;
 }
 li {
@@ -32,4 +33,12 @@ li span {
 li.mole span {
     /*background-color: brown;*/
 	background-image:url(images/game/mole.png); 
+}
+
+p {
+    /*margin-left: 5px;*/
+	width:260px;
+	height:auto;
+	border:1px solid black;
+	text-align: center;
 }
