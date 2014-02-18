@@ -32,10 +32,15 @@ var whacAMole = (function () {
     initialize = function () {
         prepare();
         render();
-        launch(); 
 		prepareScreen();
 		setScoreEvent();
     };
+	
+	gamestart = function () {
+		document.getElementById('grid').style.display = "block";
+		document.getElementById('launcher').style.display = "none";
+		launch(); 
+	}
 	
 	// prepare the elements on the grid
     prepare = function () {
