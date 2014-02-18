@@ -1,7 +1,6 @@
 var whacAMole = (function () {
-    var height = 4,
-        width = 7,
-		height = 4,
+    var width = 5,
+		height = 6,
         initialize,
         li,
         liElements = [],
