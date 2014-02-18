@@ -44,6 +44,7 @@ var whacAMole = (function () {
         stage = document.getElementsByTagName('ul')[0];
     };
 	
+	// make the score appears
     prepareScreen = function () {
         scoreDiv = utils.id('score');
         score = utils.getNodeAsInt(scoreDiv);
@@ -66,11 +67,15 @@ var whacAMole = (function () {
         timer = setInterval(renderMole, speed);
     };
 	
+	// function to update the score on each click
     setScoreEvent = function () {
         stage.addEventListener('click', function(e) {
             if (e.target && 'span' === e.target.nodeName.toLowerCase()) {
-                if ('mole' === e.target.parentNode.className ) {
-                    score += 1;
+                if ( ('mole' === e.target.parentNode.className) || ('specialmole' === e.target.parentNode.className) ) {
+                    if('mole' === e.target.parentNode.className)
+						score += 1;
+					else if('specialmole' === e.target.parentNode.className)
+						score += 10;
                     utils.setFirstChildValue(scoreDiv, score);
                     e.target.parentNode.className = '';
 
@@ -88,7 +93,11 @@ var whacAMole = (function () {
     renderMole = function () {
         if (undefined !== previousMole) previousMole.className = '';
         previousMole = liElements[Math.floor((Math.random()*(height * width))+1)-1];
-        previousMole.className = 'mole';
+
+		if(Math.floor((Math.random()*100)+1)%10 === 0)
+			previousMole.className = 'specialmole';
+		else
+			previousMole.className = 'mole';
     };
 
     return {
