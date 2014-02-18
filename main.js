@@ -14,9 +14,10 @@ var whacAMole = (function () {
         score,
         span,
         speed = 750,
+		speedmax = 750,
         launch,
         timer,
-		speeddown = 75,
+		speeddown = 75	,
         utils = {
             id: function (id) {
                 return document.getElementById(id);
@@ -83,8 +84,7 @@ var whacAMole = (function () {
 						score += 10;
                     utils.setFirstChildValue(scoreDiv, score);
                     e.target.parentNode.className = '';
-
-					if (score%10 === 0) {
+					if (speed > (speedmax-((Math.floor(score/10))*speeddown))) {
 						clearInterval(timer);
 						speed -= speeddown;
 						timer = setInterval(renderMole, speed);
