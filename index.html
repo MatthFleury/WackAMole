@@ -5,15 +5,25 @@
 	</head>
 	<body>
 	<article id="launcher">
-	Ecran d'acceuil<br/>
-	<button id="start"  onClick="gamestart()">Game Start</button><br/>
-	<button id="scoreboard">Scoreboard</button>
+		Ecran d'acceuil<br/>
+		<button id="start"  onClick="gamestart()">Game Start</button><br/>
+		<button id="scoreboard">Scoreboard</button>
+	</article>
+	<article id="gameEnd" style="display: none;">
+		<p>
+			Score: <span id="scoreEnd">0</span> points!
+		</p>
+		<button id="start"  onClick="gamestart()">Restart</button><br/>
+		<button id="scoreboard">Scoreboard</button>
 	</article>
 	    <section id="grid" style="display: none;">
 			<ul>
 			</ul>
 			<p>
 				Score: <span id="score">0</span> points!
+			</p>
+			<p>
+				Temps restant: <span id="gameTimeOut">0</span> s!
 			</p>
 		</section>
 	</body>
