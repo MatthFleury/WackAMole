@@ -48,6 +48,7 @@ var whacAMole = (function () {
 		document.getElementById('gameEnd').style.display = "none";
 		score = 0;
 		gameTimer = 0;
+		speed = speedmax;
 		utils.setFirstChildValue(scoreDiv, score);
 		launch(); 
 	}
