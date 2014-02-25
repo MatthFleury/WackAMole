@@ -35,9 +35,9 @@ li.mole span {
 	background-image:url(images/game/mole.png); 
 }
 
-li.specialmole span {
+li.bonusmole span {
     /*background-color: brown;*/
-	background-image:url(images/game/specialmole.png);
+	background-image:url(images/game/bonusmole.png);
 }
 
 p {

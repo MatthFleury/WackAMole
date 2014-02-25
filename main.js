@@ -90,10 +90,10 @@ var whacAMole = (function () {
     setScoreEvent = function () {
         stage.addEventListener('click', function(e) {
             if (e.target && 'span' === e.target.nodeName.toLowerCase()) {
-                if ( ('mole' === e.target.parentNode.className) || ('specialmole' === e.target.parentNode.className) ) {
+                if ( ('mole' === e.target.parentNode.className) || ('bonusmole' === e.target.parentNode.className) ) {
                     if('mole' === e.target.parentNode.className)
 						score += 1;
-					else if('specialmole' === e.target.parentNode.className)
+					else if('bonusmole' === e.target.parentNode.className)
 						score += 10;
                     utils.setFirstChildValue(scoreDiv, score);
                     e.target.parentNode.className = '';
@@ -124,7 +124,7 @@ var whacAMole = (function () {
         previousMole = liElements[Math.floor((Math.random()*(height * width))+1)-1];
 
 		if(Math.floor((Math.random()*100)+1)%10 === 0)
-			previousMole.className = 'specialmole';
+			previousMole.className = 'bonusmole';
 		else
 			previousMole.className = 'mole';
     };
