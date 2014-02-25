@@ -40,6 +40,11 @@ li.bonusmole span {
 	background-image:url(images/game/bonusmole.png);
 }
 
+li.malusmole span {
+    /*background-color: brown;*/
+	background-image:url(images/game/malusmole.png);
+}
+
 p {
     /*margin-left: 5px;*/
 	width:260px;
