@@ -17,7 +17,12 @@ var whacAMole = (function () {
 		speedmax = 750,
         launch,
         timer,
-		speeddown = 75	,
+		gameTimeOut = 100,
+		gameTimeOutDiv,
+		chronos,
+		gameEndScoreDiv,
+		speeddown = 75,
+		gameTimer = 0,
         utils = {
             id: function (id) {
                 return document.getElementById(id);
@@ -40,6 +45,11 @@ var whacAMole = (function () {
 	gamestart = function () {
 		document.getElementById('grid').style.display = "block";
 		document.getElementById('launcher').style.display = "none";
+		document.getElementById('gameEnd').style.display = "none";
+		score = 0;
+		gameTimer = 0;
+		speed = speedmax;
+		utils.setFirstChildValue(scoreDiv, score);
 		launch(); 
 	}
 	
@@ -54,6 +64,9 @@ var whacAMole = (function () {
     prepareScreen = function () {
         scoreDiv = utils.id('score');
         score = utils.getNodeAsInt(scoreDiv);
+        gameTimeOutDiv = utils.id('gameTimeOut');
+		utils.setFirstChildValue(gameTimeOutDiv, gameTimeOut);
+		gameEndScoreDiv = utils.id('scoreEnd');
     };
 	
 	// create the render of the elements
@@ -71,17 +84,23 @@ var whacAMole = (function () {
 	// launch the game
     launch = function () {
         timer = setInterval(renderMole, speed);
+		chronos = setInterval(chrono, 1000);
     };
 	
 	// function to update the score on each click
     setScoreEvent = function () {
         stage.addEventListener('click', function(e) {
             if (e.target && 'span' === e.target.nodeName.toLowerCase()) {
-                if ( ('mole' === e.target.parentNode.className) || ('bonusmole' === e.target.parentNode.className) ) {
+                if ( ('mole' === e.target.parentNode.className) || ('bonusmole' === e.target.parentNode.className) || ('malusmole' === e.target.parentNode.className) ) {
                     if('mole' === e.target.parentNode.className)
 						score += 1;
 					else if('bonusmole' === e.target.parentNode.className)
 						score += 10;
+					else if('malusmole' === e.target.parentNode.className)
+						if(score >= 10)
+							score -= 10;
+						else
+							score = 0;
                     utils.setFirstChildValue(scoreDiv, score);
                     e.target.parentNode.className = '';
 					if (speed > (speedmax-((Math.floor(score/10))*speeddown))) {
@@ -94,6 +113,17 @@ var whacAMole = (function () {
         }, false);
     };
 
+	chrono = function (){
+		gameTimer++;
+		utils.setFirstChildValue(gameTimeOutDiv, gameTimeOut-gameTimer);
+		if(gameTimeOut-gameTimer == 0){
+			clearInterval(timer);
+			clearInterval(chronos);
+			utils.setFirstChildValue(gameEndScoreDiv, score);
+			document.getElementById('gameEnd').style.display = "block";
+			document.getElementById('grid').style.display = "none";
+		}
+	}
 	// make a mole appear randomly
     renderMole = function () {
         if (undefined !== previousMole) previousMole.className = '';
@@ -101,6 +131,8 @@ var whacAMole = (function () {
 
 		if(Math.floor((Math.random()*100)+1)%10 === 0)
 			previousMole.className = 'bonusmole';
+		else if(Math.floor((Math.random()*100)+1)%10 === 0)
+			previousMole.className = 'malusmole';
 		else
 			previousMole.className = 'mole';
     };
