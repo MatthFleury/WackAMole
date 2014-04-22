@@ -21,6 +21,16 @@ var whacAMole = (function () {
 		gameTimeOutDiv,
 		chronos,
 		gameEndScoreDiv,
+		score1,
+		score2,
+		score3,
+		score4,
+		score5,
+		spanScore1,
+		spanScore2,
+		spanScore3,
+		spanScore4,
+		spanScore5,
 		speeddown = 75,
 		gameTimer = 0,
         utils = {
@@ -36,6 +46,7 @@ var whacAMole = (function () {
         };
 		
     initialize = function () {
+		prepareScore();
         prepare();
         render();
 		prepareScreen();
@@ -53,6 +64,24 @@ var whacAMole = (function () {
 		launch(); 
 	}
 	
+	prepareScore = function() {
+		score1 = localStorage.getItem("score1");
+		score2 = localStorage.getItem("score2");
+		score3 = localStorage.getItem("score3");
+		score4 = localStorage.getItem("score4");
+		score5 = localStorage.getItem("score5");
+		if( score1 == null )
+			localStorage.setItem("score1","5");
+		if( score2 == null )
+			localStorage.setItem("score2","4");
+		if( score3 == null )
+			localStorage.setItem("score3","3");
+		if( score4 == null )
+			localStorage.setItem("score4","2");
+		if( score5 == null )
+			localStorage.setItem("score5","1");
+	}
+
 	// prepare the elements on the grid
     prepare = function () {
         span = document.createElement('span');
@@ -67,6 +96,11 @@ var whacAMole = (function () {
         gameTimeOutDiv = utils.id('gameTimeOut');
 		utils.setFirstChildValue(gameTimeOutDiv, gameTimeOut);
 		gameEndScoreDiv = utils.id('scoreEnd');
+		spanScore1 = utils.id('score1');
+		spanScore2 = utils.id('score2');
+		spanScore3 = utils.id('score3');
+		spanScore4 = utils.id('score4');
+		spanScore5 = utils.id('score5');
     };
 	
 	// create the render of the elements
@@ -122,6 +156,11 @@ var whacAMole = (function () {
 			utils.setFirstChildValue(gameEndScoreDiv, score);
 			document.getElementById('gameEnd').style.display = "block";
 			document.getElementById('grid').style.display = "none";
+			utils.setFirstChildValue(spanScore1, score1);
+			utils.setFirstChildValue(spanScore2, score2);
+			utils.setFirstChildValue(spanScore3, score3);
+			utils.setFirstChildValue(spanScore4, score4);
+			utils.setFirstChildValue(spanScore5, score5);
 		}
 	}
 	// make a mole appear randomly
