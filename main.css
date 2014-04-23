@@ -15,7 +15,7 @@ section {
 }
 li {
 	background-image:url(images/game/grass.png);
-	border: 1px solid #00db00;
+	border: 1px solid #339933;
     display: block;
     float: left;
     height: 50px;
@@ -24,25 +24,28 @@ li {
 }
 li span {
     display: block;
-    background-color: #c24700;
     width: 40px;
     height: 40px;
     margin: 5px;
-    border-radius: 40px;
+	background-image:url(images/game/mole.png);
+	background-position:0% -300%;
+	background-repeat:no-repeat;
 }
+
 li.mole span {
-    /*background-color: brown;*/
-	background-image:url(images/game/mole.png); 
+	background-position:0% 100%; 
 }
 
 li.bonusmole span {
-    /*background-color: brown;*/
 	background-image:url(images/game/bonusmole.png);
+	background-position:0% 100%;
+
 }
 
 li.malusmole span {
-    /*background-color: brown;*/
 	background-image:url(images/game/malusmole.png);
+	background-position:0% 100%;
+
 }
 
 p {
