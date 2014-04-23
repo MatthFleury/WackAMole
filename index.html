@@ -5,27 +5,27 @@
 		<script src="jquery-2.1.0.min.js" type="text/javascript"></script>
 	</head>
 	<body>
-	<article id="launcher">
-		Ecran d'acceuil<br/>
-		<button id="start"  onClick="gamestart()">Game Start</button><br/>
-		<button id="scoreboard">Scoreboard</button>
-	</article>
-	<article id="gameEnd" style="display: none;">
-		<p>
-			Score: <span id="scoreEnd">0</span> points !
-		</p>
-		<p>
-			Tableau des scores : </br>
-			<span id="score1">0</span> points !</br>
-			<span id="score2">0</span> points !</br>
-			<span id="score3">0</span> points !</br>
-			<span id="score4">0</span> points !</br>
-			<span id="score5">0</span> points !</br>
-		</p>
-		<button id="start"  onClick="gamestart()">Restart</button><br/>
-		<button id="scoreboard">Scoreboard</button>
-	</article>
-	    <section id="grid" style="display: none;">
+		<article id="launcher">
+			Ecran d'acceuil<br/>
+			<button id="start"  onClick="gamestart()">Game Start</button><br/>
+			<button id="scoreboard" onClick="scoreBoard()">Scoreboard</button>
+		</article>
+		<article id="gameEnd" style="display: none;">
+			<p>
+				Score: <span id="scoreEnd">0</span> points !
+			</p>
+			<p>
+				Tableau des scores : </br>
+				<span id="score1">0</span> points !</br>
+				<span id="score2">0</span> points !</br>
+				<span id="score3">0</span> points !</br>
+				<span id="score4">0</span> points !</br>
+				<span id="score5">0</span> points !</br>
+			</p>
+			<button id="start"  onClick="gamestart()">Restart</button><br/>
+			<button id="scoreboard" onClick="scoreBoard()">Scoreboard</button>
+		</article>
+		<section id="grid" style="display: none;">
 			<ul>
 			</ul>
 			<p>
@@ -35,5 +35,16 @@
 				Temps restant: <span id="gameTimeOut">0</span> s !
 			</p>
 		</section>
+		<article id="scoreBoardArt" style="display: none;">
+			<p>
+				Tableau des scores : </br>
+				<span id="scoreB1">0</span> points !</br>
+				<span id="scoreB2">0</span> points !</br>
+				<span id="scoreB3">0</span> points !</br>
+				<span id="scoreB4">0</span> points !</br>
+				<span id="scoreB5">0</span> points !</br>
+			</p>
+			<button id="back"  onClick="back()">Title Screen</button>
+		</article>
 	</body>
 </html>

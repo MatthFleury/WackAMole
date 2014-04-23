@@ -26,6 +26,11 @@ var whacAMole = (function () {
 		spanScore3,
 		spanScore4,
 		spanScore5,
+		spanScoreB1,
+		spanScoreB2,
+		spanScoreB3,
+		spanScoreB4,
+		spanScoreB5,
 		speeddown = 75,
 		gameTimer = 0,
         utils = {
@@ -92,6 +97,11 @@ var whacAMole = (function () {
 		spanScore3 = utils.id('score3');
 		spanScore4 = utils.id('score4');
 		spanScore5 = utils.id('score5');
+		spanScoreB1 = utils.id('scoreB1');
+		spanScoreB2 = utils.id('scoreB2');
+		spanScoreB3 = utils.id('scoreB3');
+		spanScoreB4 = utils.id('scoreB4');
+		spanScoreB5 = utils.id('scoreB5');
     };
 	
 	// create the render of the elements
@@ -203,6 +213,26 @@ var whacAMole = (function () {
 		else
 			previousMole.className = 'mole';
     };
+
+	// function to display the scoreboard
+	scoreBoard = function (){
+		document.getElementById('grid').style.display = "none";
+		document.getElementById('launcher').style.display = "none";
+		document.getElementById('gameEnd').style.display = "none";
+		document.getElementById('scoreBoardArt').style.display = "block";
+		
+		utils.setFirstChildValue(spanScoreB1, localStorage.getItem("score1"));
+		utils.setFirstChildValue(spanScoreB2, localStorage.getItem("score2"));
+		utils.setFirstChildValue(spanScoreB3, localStorage.getItem("score3"));
+		utils.setFirstChildValue(spanScoreB4, localStorage.getItem("score4"));
+		utils.setFirstChildValue(spanScoreB5, localStorage.getItem("score5"));
+	}
+
+	// function to get back to title screen
+	back = function (){
+		document.getElementById('launcher').style.display = "block";
+		document.getElementById('scoreBoardArt').style.display = "none";
+	}
 
     return {
         init: initialize
