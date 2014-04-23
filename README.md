@@ -18,7 +18,7 @@ Add the following functionnalities :
     - Improve difficulty (according to score)
     - Implements menu
 
-VERSION 0.2
+VERSION 1
 ---------------------------
 
 Add the following functionnalities :
@@ -27,7 +27,7 @@ Add the following functionnalities :
     - Improve graphics
     - Implements the record of score
 
-VERSION 0.3
+VERSION 1.1
 ---------------------------
 
 Add the following functionnalities :
