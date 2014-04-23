@@ -21,11 +21,6 @@ var whacAMole = (function () {
 		gameTimeOutDiv,
 		chronos,
 		gameEndScoreDiv,
-		score1,
-		score2,
-		score3,
-		score4,
-		score5,
 		spanScore1,
 		spanScore2,
 		spanScore3,
@@ -65,20 +60,16 @@ var whacAMole = (function () {
 	}
 	
 	prepareScore = function() {
-		score1 = localStorage.getItem("score1");
-		score2 = localStorage.getItem("score2");
-		score3 = localStorage.getItem("score3");
-		score4 = localStorage.getItem("score4");
-		score5 = localStorage.getItem("score5");
-		if( score1 == null )
+		sessionStorage.removeItem("couleur");
+		if( localStorage.getItem("score1") == null )
 			localStorage.setItem("score1","5");
-		if( score2 == null )
+		if( localStorage.getItem("score2") == null )
 			localStorage.setItem("score2","4");
-		if( score3 == null )
+		if( localStorage.getItem("score3") == null )
 			localStorage.setItem("score3","3");
-		if( score4 == null )
+		if( localStorage.getItem("score4") == null )
 			localStorage.setItem("score4","2");
-		if( score5 == null )
+		if( localStorage.getItem("score5") == null )
 			localStorage.setItem("score5","1");
 	}
 
@@ -147,6 +138,42 @@ var whacAMole = (function () {
         }, false);
     };
 
+	// function to update the best scores
+	calculateBestScore = function (){
+		if(score >= localStorage.getItem("score5")){
+			if(score >= localStorage.getItem("score4")){
+				if(score >= localStorage.getItem("score3")){
+					if(score >= localStorage.getItem("score2")){
+						if(score >= localStorage.getItem("score1")){
+							localStorage.setItem("score5" , localStorage.getItem("score4"));
+							localStorage.setItem("score4" , localStorage.getItem("score3"));
+							localStorage.setItem("score3" , localStorage.getItem("score2"));
+							localStorage.setItem("score2" , localStorage.getItem("score1"));
+							localStorage.setItem("score1" , score);
+						}
+						else{
+							localStorage.setItem("score5" , localStorage.getItem("score4"));
+							localStorage.setItem("score4" , localStorage.getItem("score3"));
+							localStorage.setItem("score3" , localStorage.getItem("score2"));
+							localStorage.setItem("score2" , score);
+						}
+					}
+					else{
+						localStorage.setItem("score5" , localStorage.getItem("score4"));
+						localStorage.setItem("score4" , localStorage.getItem("score3"));
+						localStorage.setItem("score3" , score);
+					}
+				}
+				else{
+					localStorage.setItem("score5" , localStorage.getItem("score4"));
+					localStorage.setItem("score4" , score);
+				}
+			}
+			else
+				localStorage.setItem("score5" , score);
+		}
+	}
+
 	chrono = function (){
 		gameTimer++;
 		utils.setFirstChildValue(gameTimeOutDiv, gameTimeOut-gameTimer);
@@ -156,11 +183,12 @@ var whacAMole = (function () {
 			utils.setFirstChildValue(gameEndScoreDiv, score);
 			document.getElementById('gameEnd').style.display = "block";
 			document.getElementById('grid').style.display = "none";
-			utils.setFirstChildValue(spanScore1, score1);
-			utils.setFirstChildValue(spanScore2, score2);
-			utils.setFirstChildValue(spanScore3, score3);
-			utils.setFirstChildValue(spanScore4, score4);
-			utils.setFirstChildValue(spanScore5, score5);
+			calculateBestScore();
+			utils.setFirstChildValue(spanScore1, localStorage.getItem("score1"));
+			utils.setFirstChildValue(spanScore2, localStorage.getItem("score2"));
+			utils.setFirstChildValue(spanScore3, localStorage.getItem("score3"));
+			utils.setFirstChildValue(spanScore4, localStorage.getItem("score4"));
+			utils.setFirstChildValue(spanScore5, localStorage.getItem("score5"));
 		}
 	}
 	// make a mole appear randomly
