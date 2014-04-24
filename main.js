@@ -55,6 +55,7 @@ var whacAMole = (function () {
     };
 	
 	gamestart = function () {
+		isPaused = false;
 		document.getElementById('grid').style.display = "block";
 		document.getElementById('launcher').style.display = "none";
 		document.getElementById('gameEnd').style.display = "none";
@@ -241,10 +242,18 @@ var whacAMole = (function () {
 	}
 
 	// function to get back to title screen
-	back = function (){
-		document.getElementById('gameEnd').style.display = "none";
+	back = function (e){
+		if(e == 0)
+			document.getElementById('gameEnd').style.display = "none";
+		else if(e == 1){
+			clearInterval(timer);
+			clearInterval(chronos);
+			document.getElementById('grid').style.display = "none";
+		}
+		else if(e == 2)
+			document.getElementById('scoreBoardArt').style.display = "none";
+
 		document.getElementById('launcher').style.display = "block";
-		document.getElementById('scoreBoardArt').style.display = "none";
 	}
 
     return {
