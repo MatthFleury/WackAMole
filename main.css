@@ -1,5 +1,5 @@
 body {
-    background-color: #DE9537;
+  background-color: #DE9537; 
 }
 ul {
     padding: 0;
@@ -7,12 +7,34 @@ ul {
 	/* section width must be the same */
 	width:260px;
 	height:312px;
-	border:1px solid #c24700;
+	border:1px solid gold;
+	/*#c24700;*/
 }
 section {
     width: auto;
-    padding: 5px 0;
+    /*padding: 5px 0;*/
 }
+
+#grid{
+	width:262px;
+	height:468px;
+}
+
+#scoreBackground{
+    width: 262px;
+	background-color:#bf7d11;
+}
+
+.scoreShow{
+	text-align:center;
+	color:gold;
+	font-weight:bold;
+	font-size:14px;
+	border-right: 1px solid gold;
+	border-left: 1px solid gold;
+	border-bottom: 1px solid gold;
+}
+
 li {
 	background-image:url(images/game/grass.png);
 	border: 1px solid #339933;
@@ -28,7 +50,7 @@ li span {
     height: 41px;
     margin: 5px;
 	background-image:url(images/game/mole.png);
-	background-position:0% -300%;
+	background-position:0% 2000%;
 	background-repeat:no-repeat;
 }
 
@@ -50,6 +72,7 @@ li.malusmole span {
 
 p {
     /*margin-left: 5px;*/
+	color:black;
 	width:260px;
 	height:auto;
 	border:1px solid black;
