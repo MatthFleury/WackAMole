@@ -7,7 +7,7 @@
 	<body>
 		<article id="launcher">
 			Ecran d'acceuil<br/>
-			<button id="start"  onClick="gamestart()">Game Start</button><br/>
+			<button id="start"  onClick="begin()">Game Start</button><br/>
 			<button id="scoreboard" onClick="scoreBoard()">Scoreboard</button>
 		</article>
 		<article id="gameEnd" style="display: none;">
@@ -22,9 +22,12 @@
 				<span id="score4">0</span> points !</br>
 				<span id="score5">0</span> points !</br>
 			</p>
-			<button id="start"  onClick="gamestart()">Restart</button><br/>
+			<button id="start"  onClick="begin()">Restart</button><br/>
 			<button id="scoreboard" onClick="scoreBoard()">Scoreboard</button></br>
 			<button id="back"  onClick="back(0)">Title Screen</button>
+		</article>
+		<article id="gameBegin" style="display: none;">
+			<p style="font-size:100px;border: 0px;">Start!</p>
 		</article>
 		<section id="grid" style="display: none;">
 			<ul>
