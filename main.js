@@ -230,6 +230,7 @@ var whacAMole = (function () {
 
 	// function to get back to title screen
 	back = function (){
+		document.getElementById('gameEnd').style.display = "none";
 		document.getElementById('launcher').style.display = "block";
 		document.getElementById('scoreBoardArt').style.display = "none";
 	}
