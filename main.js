@@ -33,6 +33,7 @@ var whacAMole = (function () {
 		spanScoreB5,
 		speeddown = 75,
 		gameTimer = 0,
+		isPaused = false,
         utils = {
             id: function (id) {
                 return document.getElementById(id);
@@ -184,9 +185,18 @@ var whacAMole = (function () {
 		}
 	}
 
+	pause = function (){
+		if(!isPaused)
+			isPaused = true;
+		else
+			isPaused = false;
+	}
+
 	chrono = function (){
-		gameTimer++;
-		utils.setFirstChildValue(gameTimeOutDiv, gameTimeOut-gameTimer);
+		if( !isPaused ){
+			gameTimer++;
+			utils.setFirstChildValue(gameTimeOutDiv, gameTimeOut-gameTimer);
+		}
 		if(gameTimeOut-gameTimer == 0){
 			clearInterval(timer);
 			clearInterval(chronos);
@@ -203,15 +213,17 @@ var whacAMole = (function () {
 	}
 	// make a mole appear randomly
     renderMole = function () {
-        if (undefined !== previousMole) previousMole.className = '';
-        previousMole = liElements[Math.floor((Math.random()*(height * width))+1)-1];
+		if(!isPaused){
+			if (undefined !== previousMole) previousMole.className = '';
+			previousMole = liElements[Math.floor((Math.random()*(height * width))+1)-1];
 
-		if(Math.floor((Math.random()*100)+1)%10 === 0)
-			previousMole.className = 'bonusmole';
-		else if(Math.floor((Math.random()*100)+1)%10 === 0)
-			previousMole.className = 'malusmole';
-		else
-			previousMole.className = 'mole';
+			if(Math.floor((Math.random()*100)+1)%10 === 0)
+				previousMole.className = 'bonusmole';
+			else if(Math.floor((Math.random()*100)+1)%10 === 0)
+				previousMole.className = 'malusmole';
+			else
+				previousMole.className = 'mole';
+		}
     };
 
 	// function to display the scoreboard
