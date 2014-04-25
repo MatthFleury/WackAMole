@@ -31,8 +31,9 @@ var whacAMole = (function () {
 		spanScoreB3,
 		spanScoreB4,
 		spanScoreB5,
-		speeddown = 75,
+		speeddown = 10,
 		gameTimer = 0,
+		bonusTimer = 0,
 		isPaused = false,
         utils = {
             id: function (id) {
@@ -54,6 +55,13 @@ var whacAMole = (function () {
 		setScoreEvent();
     };
 	
+	begin = function () {
+		document.getElementById('launcher').style.display = "none";
+		$('#gameBegin').show(1000)
+		$('#gameBegin').hide(1000)
+		setTimeout(gamestart, 2000);
+	}
+
 	gamestart = function () {
 		isPaused = false;
 		document.getElementById('grid').style.display = "block";
@@ -61,6 +69,7 @@ var whacAMole = (function () {
 		document.getElementById('gameEnd').style.display = "none";
 		score = 0;
 		gameTimer = 0;
+		bonustimer =0;
 		speed = speedmax;
 		utils.setFirstChildValue(scoreDiv, score);
 		launch(); 
@@ -195,7 +204,16 @@ var whacAMole = (function () {
 
 	chrono = function (){
 		if( !isPaused ){
-			gameTimer++;
+			if(gameTimer%20 == 0 && bonusTimer != 2 && gameTimer != 0)
+				bonusWave();
+			else if(bonusTimer == 2){
+				hideAllMole();
+				bonusTimer = 0;
+				gameTimer++;
+			}
+			else
+				gameTimer++;
+
 			utils.setFirstChildValue(gameTimeOutDiv, gameTimeOut-gameTimer);
 		}
 		if(gameTimeOut-gameTimer == 0){
@@ -214,7 +232,7 @@ var whacAMole = (function () {
 	}
 	// make a mole appear randomly
     renderMole = function () {
-		if(!isPaused){
+		if(!isPaused && bonusTimer == 0){
 			if (undefined !== previousMole) previousMole.className = '';
 			previousMole = liElements[Math.floor((Math.random()*(height * width))+1)-1];
 
@@ -226,7 +244,44 @@ var whacAMole = (function () {
 				previousMole.className = 'mole';
 		}
     };
-
+	
+	//Launch the bonus wave
+	bonusWave = function () {
+		if(bonusTimer == 0)
+			renderAllMole();
+		bonusTimer++;
+	}
+	
+	
+	//All mole appear for bonus wave
+    renderAllMole = function () {
+		if(!isPaused){
+			for (var i = 0; i < (height * width); i++) {
+				previousMole = liElements[i];
+				
+				if(Math.floor((Math.random()*100)+1)%10 === 0)
+					previousMole.className = 'malusmole';
+				else
+					previousMole.className = 'mole';
+			}
+			
+			//Only one bonus mole during bonus wave
+			previousMole = liElements[Math.floor((Math.random()*(height * width))+1)-1];
+			previousMole.className = 'bonusmole';
+		}
+    };
+	
+	//Hide all mole at the end of bonus wave
+    hideAllMole = function () {
+		if(!isPaused){
+			for (var i = 0; i < (height * width); i++) {
+				previousMole = liElements[i];
+				previousMole.className = '';
+			}
+		}
+    };
+	
+	
 	// function to display the scoreboard
 	scoreBoard = function (){
 		document.getElementById('grid').style.display = "none";
