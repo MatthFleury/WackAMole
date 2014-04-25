@@ -1,6 +1,47 @@
 body {
-  background-color: #DE9537; 
+  background-color: #336633; 
+
 }
+
+#launcher{
+	border:1px solid gold;
+	background-image:url(images/game/maintitle.png);
+	width:260px;
+	height:154px;/*total:403px;*/
+	padding-top:249px;
+	margin:auto;
+	margin-top:40px;
+}
+
+.mybutton{
+	background-color:#bf7d11;
+	margin:auto;
+	width:80px;
+	color:gold;
+	text-align:center;
+	font-weight:bold;
+	border-radius:10% 10% 10% 10%;
+	border:1px solid gold;
+	cursor:pointer;
+}
+
+.mybutton:hover{
+	background-color:gold;
+	color:red;
+}
+
+#start{
+	height:24px;
+	padding-top:4px;
+	font-size:20px;
+}
+
+#scoreboard{
+	height:24px;
+	padding-top:4px;
+	font-size:16px;
+}
+
 ul {
     padding: 0;
     margin: 0;
@@ -8,16 +49,16 @@ ul {
 	width:260px;
 	height:312px;
 	border:1px solid gold;
-	/*#c24700;*/
 }
 section {
     width: auto;
-    /*padding: 5px 0;*/
 }
 
 #grid{
 	width:262px;
-	height:468px;
+	height:300px;
+	margin:auto;
+	margin-top:40px;
 }
 
 #scoreBackground{
@@ -33,6 +74,7 @@ section {
 	border-right: 1px solid gold;
 	border-left: 1px solid gold;
 	border-bottom: 1px solid gold;
+	height:90px;
 }
 
 li {
@@ -70,8 +112,12 @@ li.malusmole span {
 
 }
 
+#pause{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
 p {
-    /*margin-left: 5px;*/
 	color:black;
 	width:260px;
 	height:auto;

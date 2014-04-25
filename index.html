@@ -6,9 +6,9 @@
 	</head>
 	<body>
 		<article id="launcher">
-			Ecran d'acceuil<br/>
-			<button id="start"  onClick="gamestart()">Game Start</button><br/>
-			<button id="scoreboard" onClick="scoreBoard()">Scoreboard</button>
+			<article class="mybutton" id="start"  onClick="gamestart()">JOUER</article>
+			<br/>
+			<article class="mybutton" id="scoreboard" onClick="scoreBoard()">SCORES</article>
 		</article>
 		<article id="gameEnd" style="display: none;">
 			<p>
@@ -34,9 +34,10 @@
 				SCORE: <span id="score">0</span> points !
 			<br/>
 				Temps restant: <span id="gameTimeOut">0</span> s !
-			</p>
-			<button id="pause"  onClick="pause()">Pause</button></br>
-			<button id="back"  onClick="back(1)">Title Screen</button>
+			<br/>
+			<article class="mybutton" id="pause"  onClick="pause()">Pause</article>
+			<article class="mybutton" id="back"  onClick="back(1)">Ecran titre</article>
+			<br/>
 			</div>
 			</section>
 		</section>
