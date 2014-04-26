@@ -124,3 +124,45 @@ p {
 	border:1px solid black;
 	text-align: center;
 }
+
+#scoreBoardArt{
+	border:1px solid gold;
+	background-image:url(images/game/score.png);
+	width:260px;
+	height:303px;/*total:403px;*/
+	padding-top:100px;
+	margin:auto;
+	margin-top:40px;
+}
+
+.scoreTab{
+	border:none;
+	color:#322004;
+	font-weight:bold;
+	font-size:16px;
+}
+#scoreTitle{
+	text-decoration:underline;
+	font-size:20px;
+}
+
+#back{
+	height:18px;
+	font-size:14px;
+}
+
+#gameEnd{
+	border:1px solid gold;
+	background-image:url(images/game/score.png);
+	width:260px;
+	height:303px;/*total:403px;*/
+	padding-top:100px;
+	margin:auto;
+	margin-top:40px;
+}
+
+#back2{
+	height:24px;
+	padding-top:4px;
+	font-size:20px;
+}

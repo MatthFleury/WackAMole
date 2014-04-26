@@ -11,10 +11,10 @@
 			<article class="mybutton" id="scoreboard" onClick="scoreBoard()">SCORES</article>
 		</article>
 		<article id="gameEnd" style="display: none;">
-			<p>
+			<p class="scoreTab" style="margin-top:-40px;">
 				Score: <span id="scoreEnd">0</span> points !
 			</p>
-			<p>
+			<p class="scoreTab">
 				Tableau des scores : </br>
 				<span id="score1">0</span> points !</br>
 				<span id="score2">0</span> points !</br>
@@ -22,18 +22,20 @@
 				<span id="score4">0</span> points !</br>
 				<span id="score5">0</span> points !</br>
 			</p>
-			<button id="start"  onClick="begin()">Restart</button><br/>
-			<button id="scoreboard" onClick="scoreBoard()">Scoreboard</button></br>
-			<button id="back"  onClick="back(0)">Title Screen</button>
+			<article class="mybutton" id="start"  onClick="begin()">Rejouer</article><br/>
+			<!--<article class="mybutton" id="scoreboard" onClick="scoreBoard()">Scores</article></br>-->
+			<article class="mybutton" id="back2"  onClick="back(0)">Accueil</article>
 		</article>
+		<!--
 		<article id="gameBegin" style="display: none;">
 			<p style="font-size:100px;border: 0px;">Start!</p>
 		</article>
+		-->
 		<section id="grid" style="display: none;">
 			<ul>
 			</ul>
 			<section id="scoreBackground">
-			<div class="scoreShow">
+			<article class="scoreShow">
 				SCORE: <span id="score">0</span> points !
 			<br/>
 				Temps restant: <span id="gameTimeOut">0</span> s !
@@ -41,19 +43,20 @@
 			<article class="mybutton" id="pause"  onClick="pause()">Pause</article>
 			<article class="mybutton" id="back"  onClick="back(1)">Ecran titre</article>
 			<br/>
-			</div>
+			</article>
 			</section>
 		</section>
 		<article id="scoreBoardArt" style="display: none;">
-			<p>
-				Tableau des scores : </br>
+			<p class="scoreTab">
+				<span id="scoreTitle">Meilleurs scores :</span></br>
 				<span id="scoreB1">0</span> points !</br>
 				<span id="scoreB2">0</span> points !</br>
 				<span id="scoreB3">0</span> points !</br>
 				<span id="scoreB4">0</span> points !</br>
 				<span id="scoreB5">0</span> points !</br>
 			</p>
-			<button id="back"  onClick="back(2)">Title Screen</button>
+			
+			<article class="mybutton" id="back"  onClick="back(2)">RETOUR</article>
 		</article>
 	</body>
 </html>

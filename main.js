@@ -57,8 +57,8 @@ var whacAMole = (function () {
 	
 	begin = function () {
 		document.getElementById('launcher').style.display = "none";
-		$('#gameBegin').show(1000)
-		$('#gameBegin').hide(1000)
+		//$('#gameBegin').show(1000)
+		//$('#gameBegin').hide(1000)
 		setTimeout(gamestart, 2000);
 	}
 
@@ -235,13 +235,13 @@ var whacAMole = (function () {
 		if(!isPaused && bonusTimer == 0){
 			if (undefined !== previousMole) previousMole.className = '';
 			previousMole = liElements[Math.floor((Math.random()*(height * width))+1)-1];
-
 			if(Math.floor((Math.random()*100)+1)%10 === 0)
 				previousMole.className = 'bonusmole';
 			else if(Math.floor((Math.random()*100)+1)%10 === 0)
 				previousMole.className = 'malusmole';
-			else
+			else{
 				previousMole.className = 'mole';
+			}
 		}
     };
 	
