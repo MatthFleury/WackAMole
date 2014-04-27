@@ -148,7 +148,7 @@ var whacAMole = (function () {
 						else
 							score = 0;
                     utils.setFirstChildValue(scoreDiv, score);
-                    e.target.parentNode.className = '';
+                    e.target.parentNode.className = 'deadmole';
 					if (speed > (speedmax-((Math.floor(score/10))*speeddown))) {
 						clearInterval(timer);
 						speed -= speeddown;

@@ -118,6 +118,12 @@ li.malusmole span {
 
 }
 
+li.deadmole span {
+	background-image:url(images/game/deadmole.png);
+	background-position:0% 100%;
+
+}
+
 #pause{
 	margin-top:5px;
 	margin-bottom:5px;
