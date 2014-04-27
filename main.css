@@ -135,6 +135,16 @@ p {
 	margin-top:40px;
 }
 
+#instructionScreen{
+	border:1px solid gold;
+	background-image:url(images/game/score.png);
+	width:260px;
+	height:303px;/*total:403px;*/
+	padding-top:100px;
+	margin:auto;
+	margin-top:40px;
+}
+
 .scoreTab{
 	border:none;
 	color:#322004;

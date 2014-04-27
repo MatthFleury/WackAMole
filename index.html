@@ -8,6 +8,8 @@
 		<article id="launcher">
 			<article class="mybutton" id="start"  onClick="gamestart()">JOUER</article>
 			<br/>
+			<article class="mybutton" id="instruction"  onClick="instructionScreen()">INSTRUCTIONS</article>
+			<br/>
 			<article class="mybutton" id="scoreboard" onClick="scoreBoard()">SCORES</article>
 		</article>
 		<article id="gameEnd" style="display: none;">
@@ -57,6 +59,15 @@
 			</p>
 			
 			<article class="mybutton" id="back"  onClick="back(2)">RETOUR</article>
+		</article>
+		<article id="instructionScreen" style="display: none;">
+			<p class="scoreTab">
+				Le but du jeu est très simple, faire le score maximum en touchant les taupes qui apparaissent.</br>
+				<img src="./images/game/mole.png" alt="Taupe normale">La taupe normale rapporte <b>1</b> points.</br>
+				<img src="./images/game/bonusmole.png" alt="Taupe bonus">La taupe bonus rapporte <b>10</b> points.</br>
+				<img src="./images/game/malusmole.png" alt="Taupe malus">La taupe malus enléve <b>10</b> points.
+			</p>
+			<article class="mybutton" id="back"  onClick="back(3)">RETOUR</article>
 		</article>
 	</body>
 </html>

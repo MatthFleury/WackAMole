@@ -46,7 +46,7 @@ var whacAMole = (function () {
                 parentElem.firstChild.nodeValue = value;
             }
         };
-		
+
     initialize = function () {
 		prepareScore();
         prepare();
@@ -54,7 +54,7 @@ var whacAMole = (function () {
 		prepareScreen();
 		setScoreEvent();
     };
-	
+
 	begin = function () {
 		document.getElementById('launcher').style.display = "none";
 		//$('#gameBegin').show(1000)
@@ -296,6 +296,15 @@ var whacAMole = (function () {
 		utils.setFirstChildValue(spanScoreB5, localStorage.getItem("score5"));
 	}
 
+	// function to display the instructions
+	instructionScreen = function (){
+		document.getElementById('grid').style.display = "none";
+		document.getElementById('launcher').style.display = "none";
+		document.getElementById('gameEnd').style.display = "none";
+		document.getElementById('scoreBoardArt').style.display = "none";
+		document.getElementById('instructionScreen').style.display = "block";
+	}
+
 	// function to get back to title screen
 	back = function (e){
 		if(e == 0)
@@ -307,6 +316,8 @@ var whacAMole = (function () {
 		}
 		else if(e == 2)
 			document.getElementById('scoreBoardArt').style.display = "none";
+		else if(e == 3)
+			document.getElementById('instructionScreen').style.display = "none";
 
 		document.getElementById('launcher').style.display = "block";
 	}
