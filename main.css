@@ -10,7 +10,7 @@ body {
 	height:154px;/*total:403px;*/
 	padding-top:249px;
 	margin:auto;
-	margin-top:40px;
+	margin-top:30px;
 }
 
 .mybutton{
@@ -42,6 +42,12 @@ body {
 	font-size:16px;
 }
 
+#instruction{
+	height:20px;
+	padding-top:8px;
+	font-size:10px;
+}
+
 ul {
     padding: 0;
     margin: 0;
@@ -58,7 +64,7 @@ section {
 	width:262px;
 	height:300px;
 	margin:auto;
-	margin-top:40px;
+	margin-top:30px;
 }
 
 #scoreBackground{
@@ -132,17 +138,7 @@ p {
 	height:303px;/*total:403px;*/
 	padding-top:100px;
 	margin:auto;
-	margin-top:40px;
-}
-
-#instructionScreen{
-	border:1px solid gold;
-	background-image:url(images/game/score.png);
-	width:260px;
-	height:303px;/*total:403px;*/
-	padding-top:100px;
-	margin:auto;
-	margin-top:40px;
+	margin-top:30px;
 }
 
 .scoreTab{
@@ -150,6 +146,23 @@ p {
 	color:#322004;
 	font-weight:bold;
 	font-size:16px;
+}
+
+#instructionScreen{
+	border:1px solid gold;
+	background-image:url(images/game/score.png);
+	width:260px;
+	height:323px;/*total:403px;*/
+	padding-top:80px;
+	margin:auto;
+	margin-top:30px;
+}
+
+.rules{
+	border:none;
+	color:#322004;
+	font-weight:bold;
+	font-size:13px;
 }
 #scoreTitle{
 	text-decoration:underline;
@@ -168,7 +181,7 @@ p {
 	height:303px;/*total:403px;*/
 	padding-top:100px;
 	margin:auto;
-	margin-top:40px;
+	margin-top:30px;
 }
 
 #back2{
