@@ -7,7 +7,7 @@
 	<body>
 		<!--<audio id="boing" src="./sfx/boing.mp3"></audio>-->
 		<article id="launcher">
-			<article class="mybutton" id="start"  onClick="gamestart()">JOUER</article>
+			<article class="mybutton" id="start"  onClick="gameMode()">JOUER</article>
 			<br/>
 			<article class="mybutton" id="instruction"  onClick="instructionScreen()">INSTRUCTIONS</article>
 			<br/>
@@ -41,7 +41,7 @@
 			<article class="scoreShow">
 				SCORE: <span id="score">0</span> points !
 			<br/>
-				Temps restant: <span id="gameTimeOut">0</span> s !
+				<span id="classicStatus">Temps restant: </span><span id="hardStatus">Vie restant: </span><span id="gameTimeOut">0</span></span>
 			<br/>
 			<article class="mybutton" id="pause"  onClick="pause()">Pause</article>
 			<article class="mybutton" id="back"  onClick="back(1)">Ecran titre</article>
@@ -70,5 +70,9 @@
 			</p>
 			<article class="mybutton" id="back"  onClick="back(3)">RETOUR</article>
 		</article>
+		<article id="gameMode" style="display: none;">
+			<article class="mybutton" id="survive"  onClick="gamestart(0)">Survive</article><br/>
+			<article class="mybutton" id="classic"  onClick="gamestart(1)">Classic WackAMole</article>
+		</article>		
 	</body>
 </html>
