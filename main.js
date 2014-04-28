@@ -221,6 +221,10 @@ var whacAMole = (function () {
 		}
 	}
 
+	/*sound = function () {
+		document.getElementById("boing").play();
+	}*/
+
 	pause = function (){
 		if(!isPaused)
 			isPaused = true;
