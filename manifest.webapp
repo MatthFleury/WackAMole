@@ -3,9 +3,9 @@
   "description": "Wack A Mole for FirefoxOS",
   "launch_path": "/index.html",
   "icons": {
-    "48": "images/logo/48/mole.png",
-    "60": "images/logo/60/mole.png",
-    "128": "images/logo/128/mole.png"
+    "48": "/images/logo/48/mole.png",
+    "60": "/images/logo/60/mole.png",
+    "128": "/images/logo/128/mole.png"
   },
   "developer": {
     "name": "MatthFleury, RemPil and printfx000",

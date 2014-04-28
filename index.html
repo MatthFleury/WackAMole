@@ -11,7 +11,7 @@
 			<br/>
 			<article class="mybutton" id="instruction"  onClick="instructionScreen()">INSTRUCTIONS</article>
 			<br/>
-			<article class="mybutton" id="scoreboard" onClick="scoreBoard()">SCORES</article>
+			<article class="mybutton" id="scoreboard" onClick="scoreBoard(1)">SCORES</article>
 		</article>
 		<article id="gameEnd" style="display: none;">
 			<p class="scoreTab" style="margin-top:-40px;">
@@ -51,6 +51,7 @@
 			</section>
 		</section>
 		<article id="scoreBoardArt" style="display: none;">
+			<article class="mybutton" id="back"  onClick="scoreBoard(1)">Classic</article><article class="mybutton" id="back"  onClick="scoreBoard(2)">Survive</article>
 			<p class="scoreTab">
 				<span id="scoreTitle">Meilleurs scores :</span></br>
 				<span id="scoreB1">0</span> points !</br>

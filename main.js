@@ -32,6 +32,7 @@ var whacAMole = (function () {
 		spanScoreB3,
 		spanScoreB4,
 		spanScoreB5,
+		typeScore,
 		speeddown = 10,
 		gameTimer = 0,
 		bonusTimer = 0,
@@ -93,6 +94,7 @@ var whacAMole = (function () {
 	
 	prepareScore = function() {
 		sessionStorage.removeItem("couleur");
+		//Score normal
 		if( localStorage.getItem("score1") == null )
 			localStorage.setItem("score1","5");
 		if( localStorage.getItem("score2") == null )
@@ -103,6 +105,18 @@ var whacAMole = (function () {
 			localStorage.setItem("score4","2");
 		if( localStorage.getItem("score5") == null )
 			localStorage.setItem("score5","1");
+
+		//Score survive
+		if( localStorage.getItem("scoreS1") == null )
+			localStorage.setItem("scoreS1","5");
+		if( localStorage.getItem("scoreS2") == null )
+			localStorage.setItem("scoreS2","4");
+		if( localStorage.getItem("scoreS3") == null )
+			localStorage.setItem("scoreS3","3");
+		if( localStorage.getItem("scoreS4") == null )
+			localStorage.setItem("scoreS4","2");
+		if( localStorage.getItem("scoreS5") == null )
+			localStorage.setItem("scoreS5","1");
 	}
 
 	// prepare the elements on the grid
@@ -187,37 +201,42 @@ var whacAMole = (function () {
 
 	// function to update the best scores
 	calculateBestScore = function (){
-		if(score >= localStorage.getItem("score5")){
-			if(score >= localStorage.getItem("score4")){
-				if(score >= localStorage.getItem("score3")){
-					if(score >= localStorage.getItem("score2")){
-						if(score >= localStorage.getItem("score1")){
-							localStorage.setItem("score5" , localStorage.getItem("score4"));
-							localStorage.setItem("score4" , localStorage.getItem("score3"));
-							localStorage.setItem("score3" , localStorage.getItem("score2"));
-							localStorage.setItem("score2" , localStorage.getItem("score1"));
-							localStorage.setItem("score1" , score);
+		if(styleMode == 0)
+			typeScore = "scoreS";
+		else
+			typeScore = "score";
+		
+		if(score >= localStorage.getItem(typeScore+"5")){
+			if(score >= localStorage.getItem(typeScore+"4")){
+				if(score >= localStorage.getItem(typeScore+"3")){
+					if(score >= localStorage.getItem(typeScore+"2")){
+						if(score >= localStorage.getItem(typeScore+"1")){
+							localStorage.setItem(typeScore+"5" , localStorage.getItem(typeScore+"4"));
+							localStorage.setItem(typeScore+"4" , localStorage.getItem(typeScore+"3"));
+							localStorage.setItem(typeScore+"3" , localStorage.getItem(typeScore+"2"));
+							localStorage.setItem(typeScore+"2" , localStorage.getItem(typeScore+"1"));
+							localStorage.setItem(typeScore+"1" , score);
 						}
 						else{
-							localStorage.setItem("score5" , localStorage.getItem("score4"));
-							localStorage.setItem("score4" , localStorage.getItem("score3"));
-							localStorage.setItem("score3" , localStorage.getItem("score2"));
-							localStorage.setItem("score2" , score);
+							localStorage.setItem(typeScore+"5" , localStorage.getItem(typeScore+"4"));
+							localStorage.setItem(typeScore+"4" , localStorage.getItem(typeScore+"3"));
+							localStorage.setItem(typeScore+"3" , localStorage.getItem(typeScore+"2"));
+							localStorage.setItem(typeScore+"2" , score);
 						}
 					}
 					else{
-						localStorage.setItem("score5" , localStorage.getItem("score4"));
-						localStorage.setItem("score4" , localStorage.getItem("score3"));
-						localStorage.setItem("score3" , score);
+						localStorage.setItem(typeScore+"5" , localStorage.getItem(typeScore+"4"));
+						localStorage.setItem(typeScore+"4" , localStorage.getItem(typeScore+"3"));
+						localStorage.setItem(typeScore+"3" , score);
 					}
 				}
 				else{
-					localStorage.setItem("score5" , localStorage.getItem("score4"));
-					localStorage.setItem("score4" , score);
+					localStorage.setItem(typeScore+"5" , localStorage.getItem(typeScore+"4"));
+					localStorage.setItem(typeScore+"4" , score);
 				}
 			}
 			else
-				localStorage.setItem("score5" , score);
+				localStorage.setItem(typeScore+"5" , score);
 		}
 	}
 
@@ -278,11 +297,11 @@ var whacAMole = (function () {
 			document.getElementById('gameEnd').style.display = "block";
 			document.getElementById('grid').style.display = "none";
 			calculateBestScore();
-			utils.setFirstChildValue(spanScore1, localStorage.getItem("score1"));
-			utils.setFirstChildValue(spanScore2, localStorage.getItem("score2"));
-			utils.setFirstChildValue(spanScore3, localStorage.getItem("score3"));
-			utils.setFirstChildValue(spanScore4, localStorage.getItem("score4"));
-			utils.setFirstChildValue(spanScore5, localStorage.getItem("score5"));
+			utils.setFirstChildValue(spanScore1, localStorage.getItem(typeScore+"1"));
+			utils.setFirstChildValue(spanScore2, localStorage.getItem(typeScore+"2"));
+			utils.setFirstChildValue(spanScore3, localStorage.getItem(typeScore+"3"));
+			utils.setFirstChildValue(spanScore4, localStorage.getItem(typeScore+"4"));
+			utils.setFirstChildValue(spanScore5, localStorage.getItem(typeScore+"5"));
 	}
 	
 	//Launch the bonus wave
@@ -332,17 +351,24 @@ var whacAMole = (function () {
 	
 	
 	// function to display the scoreboard
-	scoreBoard = function (){
+	scoreBoard = function (e){
 		document.getElementById('grid').style.display = "none";
 		document.getElementById('launcher').style.display = "none";
 		document.getElementById('gameEnd').style.display = "none";
 		document.getElementById('scoreBoardArt').style.display = "block";
-		
-		utils.setFirstChildValue(spanScoreB1, localStorage.getItem("score1"));
-		utils.setFirstChildValue(spanScoreB2, localStorage.getItem("score2"));
-		utils.setFirstChildValue(spanScoreB3, localStorage.getItem("score3"));
-		utils.setFirstChildValue(spanScoreB4, localStorage.getItem("score4"));
-		utils.setFirstChildValue(spanScoreB5, localStorage.getItem("score5"));
+		if(e == 1){
+			utils.setFirstChildValue(spanScoreB1, localStorage.getItem("score1"));
+			utils.setFirstChildValue(spanScoreB2, localStorage.getItem("score2"));
+			utils.setFirstChildValue(spanScoreB3, localStorage.getItem("score3"));
+			utils.setFirstChildValue(spanScoreB4, localStorage.getItem("score4"));
+			utils.setFirstChildValue(spanScoreB5, localStorage.getItem("score5"));
+		}else{
+			utils.setFirstChildValue(spanScoreB1, localStorage.getItem("scoreS1"));
+			utils.setFirstChildValue(spanScoreB2, localStorage.getItem("scoreS2"));
+			utils.setFirstChildValue(spanScoreB3, localStorage.getItem("scoreS3"));
+			utils.setFirstChildValue(spanScoreB4, localStorage.getItem("scoreS4"));
+			utils.setFirstChildValue(spanScoreB5, localStorage.getItem("scoreS5"));
+		}
 	}
 
 	// function to display the instructions
