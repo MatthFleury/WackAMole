@@ -233,14 +233,17 @@ var whacAMole = (function () {
 	// make a mole appear randomly
     renderMole = function () {
 		if(!isPaused && bonusTimer == 0){
-			if (undefined !== previousMole) previousMole.className = '';
-			previousMole = liElements[Math.floor((Math.random()*(height * width))+1)-1];
-			if(Math.floor((Math.random()*100)+1)%10 === 0)
-				previousMole.className = 'bonusmole';
-			else if(Math.floor((Math.random()*100)+1)%10 === 0)
-				previousMole.className = 'malusmole';
-			else{
-				previousMole.className = 'mole';
+			if (undefined !== previousMole) hideAllMole();
+			for (var i = 0; i < 2; i++) {
+				previousMole = liElements[Math.floor((Math.random()*(height * width))+1)-1];
+				if(Math.floor((Math.random()*100)+1)%10 === 0)
+					previousMole.className = 'bonusmole';
+				else if(Math.floor((Math.random()*100)+1)%10 === 0)
+					previousMole.className = 'malusmole';
+				else{
+					previousMole.className = 'mole';
+				}
+				
 			}
 		}
     };
