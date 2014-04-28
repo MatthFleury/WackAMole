@@ -249,7 +249,11 @@ var whacAMole = (function () {
     renderMole = function () {
 		if(!isPaused && bonusTimer == 0){
 			if (undefined !== previousMole) hideAllMole();
-			for (var i = 0; i < 2; i++) {
+			if(styleMode==1)
+				randomMole=Math.random()*3;
+			else
+				randomMole=1;
+			for (var i = 0; i < randomMole; i++) {
 				previousMole = liElements[Math.floor((Math.random()*(height * width))+1)-1];
 				if(Math.floor((Math.random()*100)+1)%10 === 0)
 					previousMole.className = 'bonusmole';

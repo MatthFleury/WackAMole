@@ -195,3 +195,13 @@ p {
 	padding-top:4px;
 	font-size:20px;
 }
+
+#gameMode{
+	border:1px solid gold;
+	background-image:url(images/game/score.png);
+	width:260px;
+	height:233px;/*total:403px;*/
+	padding-top:170px;
+	margin:auto;
+	margin-top:30px;
+}
