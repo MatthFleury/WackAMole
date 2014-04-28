@@ -43,17 +43,17 @@
 			<article class="scoreShow">
 				SCORE: <span id="score">0</span> points !
 			<br/>
-				<span id="classicStatus">Temps restant: </span><span id="hardStatus">Vie restant: </span><span id="gameTimeOut">0</span></span>
+				<span id="classicStatus">Temps restant: </span><span id="hardStatus">Vies restantes: </span><span id="gameTimeOut">0</span></span>
 			<br/>
 			<article class="mybutton" id="pause"  onClick="pause()">Pause</article>
-			<article class="mybutton back"  onClick="back(1)">Ecran titre</article>
+			<article class="mybutton back"  onClick="back(1)">Accueil</article>
 			<br/>
 			</article>
 			</section>
 		</section>
 		<article id="scoreBoardArt" style="display: none;">
-			<article class="mybutton back"  onClick="scoreBoard(1)">Classic</article><br/>
-			<article class="mybutton back"  onClick="scoreBoard(2)">Survive</article>
+			<article class="mybutton back" id="classicMode" onClick="scoreBoard(1)">Classique</article><br/>
+			<article class="mybutton back" id="survivalMode" onClick="scoreBoard(2)">Survie</article>
 			<p class="scoreTab">
 				<span id="scoreTitle">Meilleurs scores :</span></br>
 				<span id="scoreB1">0</span> points !</br>
@@ -75,8 +75,8 @@
 			<article class="mybutton back"  onClick="back(3)">RETOUR</article>
 		</article>
 		<article id="gameMode" style="display: none;">
-			<article class="mybutton" id="survive"  onClick="gamestart(0)">Survive</article><br/>
-			<article class="mybutton" id="classic"  onClick="gamestart(1)">Classic</article><br/>
+			<article class="mybutton" id="classic"  onClick="gamestart(1)">Classique</article><br/>
+			<article class="mybutton" id="survive"  onClick="gamestart(0)">Survie</article><br/>
 			<article class="mybutton back"  onClick="back(4)">RETOUR</article>
 		</article>		
 	</body>
