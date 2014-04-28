@@ -357,8 +357,8 @@ var whacAMole = (function () {
 		document.getElementById('gameEnd').style.display = "none";
 		document.getElementById('scoreBoardArt').style.display = "block";
 		if(e == 1){
-			//document.getElementById('classicMode').className="mybutton2 back";
-			//document.getElementById('survivalMode').className="mybutton back";
+			document.getElementById('classicMode').className="mybutton back";
+			document.getElementById('survivalMode').className="mybutton back";
 			utils.setFirstChildValue(spanScoreB1, localStorage.getItem("score1"));
 			utils.setFirstChildValue(spanScoreB2, localStorage.getItem("score2"));
 			utils.setFirstChildValue(spanScoreB3, localStorage.getItem("score3"));
@@ -374,8 +374,8 @@ var whacAMole = (function () {
 			}
 				
 		}else{
-			//document.getElementById('survivalMode').className="mybutton2 back";
-			//document.getElementById('classicMode').className="mybutton back";
+			document.getElementById('survivalMode').className="mybutton back";
+			document.getElementById('classicMode').className="mybutton back";
 			utils.setFirstChildValue(spanScoreB1, localStorage.getItem("scoreS1"));
 			utils.setFirstChildValue(spanScoreB2, localStorage.getItem("scoreS2"));
 			utils.setFirstChildValue(spanScoreB3, localStorage.getItem("scoreS3"));
