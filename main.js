@@ -245,10 +245,14 @@ var whacAMole = (function () {
 	}*/
 
 	pause = function (){
-		if(!isPaused)
+		if(!isPaused){
 			isPaused = true;
-		else
+			document.getElementById("pause").className="mybutton2";
+		}
+		else{
 			isPaused = false;
+			document.getElementById("pause").className="mybutton";
+		}
 	}
 
 	chrono = function (){
