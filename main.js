@@ -50,6 +50,7 @@ var whacAMole = (function () {
             }
         };
 
+	// function which calls the preparation functions
     initialize = function () {
 		prepareScore();
         prepare();
@@ -58,6 +59,7 @@ var whacAMole = (function () {
 		setScoreEvent();
     };
 
+	// function called when we want to restart
 	begin = function () {
 		document.getElementById('launcher').style.display = "none";
 		//$('#gameBegin').show(1000)
@@ -65,6 +67,7 @@ var whacAMole = (function () {
 		gamestart();
 	}
 
+	// function called when we clic on play
 	gamestart = function (mode) {
 		isPaused = false;
 		document.getElementById('grid').style.display = "block";
@@ -92,31 +95,16 @@ var whacAMole = (function () {
 		launch(); 
 	}
 	
+	// function to set default scores
 	prepareScore = function() {
-		sessionStorage.removeItem("couleur");
-		//Score normal
-		if( localStorage.getItem("score1") == null )
-			localStorage.setItem("score1","5");
-		if( localStorage.getItem("score2") == null )
-			localStorage.setItem("score2","4");
-		if( localStorage.getItem("score3") == null )
-			localStorage.setItem("score3","3");
-		if( localStorage.getItem("score4") == null )
-			localStorage.setItem("score4","2");
-		if( localStorage.getItem("score5") == null )
-			localStorage.setItem("score5","1");
-
-		//Score survive
-		if( localStorage.getItem("scoreS1") == null )
-			localStorage.setItem("scoreS1","5");
-		if( localStorage.getItem("scoreS2") == null )
-			localStorage.setItem("scoreS2","4");
-		if( localStorage.getItem("scoreS3") == null )
-			localStorage.setItem("scoreS3","3");
-		if( localStorage.getItem("scoreS4") == null )
-			localStorage.setItem("scoreS4","2");
-		if( localStorage.getItem("scoreS5") == null )
-			localStorage.setItem("scoreS5","1");
+		if( localStorage.getItem("score1") == null ){
+			var j = 5;
+			for(var i = 1 ; i < 6 ; i++){
+				localStorage.setItem("score"+i,j);
+				localStorage.setItem("scoreS"+i,j);
+				j--;
+			}
+		}
 	}
 
 	// prepare the elements on the grid
@@ -206,37 +194,13 @@ var whacAMole = (function () {
 		else
 			typeScore = "score";
 		
-		if(score >= localStorage.getItem(typeScore+"5")){
-			if(score >= localStorage.getItem(typeScore+"4")){
-				if(score >= localStorage.getItem(typeScore+"3")){
-					if(score >= localStorage.getItem(typeScore+"2")){
-						if(score >= localStorage.getItem(typeScore+"1")){
-							localStorage.setItem(typeScore+"5" , localStorage.getItem(typeScore+"4"));
-							localStorage.setItem(typeScore+"4" , localStorage.getItem(typeScore+"3"));
-							localStorage.setItem(typeScore+"3" , localStorage.getItem(typeScore+"2"));
-							localStorage.setItem(typeScore+"2" , localStorage.getItem(typeScore+"1"));
-							localStorage.setItem(typeScore+"1" , score);
-						}
-						else{
-							localStorage.setItem(typeScore+"5" , localStorage.getItem(typeScore+"4"));
-							localStorage.setItem(typeScore+"4" , localStorage.getItem(typeScore+"3"));
-							localStorage.setItem(typeScore+"3" , localStorage.getItem(typeScore+"2"));
-							localStorage.setItem(typeScore+"2" , score);
-						}
-					}
-					else{
-						localStorage.setItem(typeScore+"5" , localStorage.getItem(typeScore+"4"));
-						localStorage.setItem(typeScore+"4" , localStorage.getItem(typeScore+"3"));
-						localStorage.setItem(typeScore+"3" , score);
-					}
-				}
-				else{
-					localStorage.setItem(typeScore+"5" , localStorage.getItem(typeScore+"4"));
-					localStorage.setItem(typeScore+"4" , score);
-				}
+		for(var i = 1 ; i <= 5 ; i++){
+			if(score >= localStorage.getItem(typeScore+i)){
+				for(var j = 5 ; j >= i ; j--)
+					localStorage.setItem(typeScore+j , localStorage.getItem(typeScore+(j-1)));
+				localStorage.setItem(typeScore+i , score);
+				i=6;
 			}
-			else
-				localStorage.setItem(typeScore+"5" , score);
 		}
 	}
 
@@ -244,6 +208,7 @@ var whacAMole = (function () {
 		document.getElementById("boing").play();
 	}*/
 
+	// funciton to pause/unpause the game
 	pause = function (){
 		if(!isPaused){
 			isPaused = true;
@@ -255,6 +220,7 @@ var whacAMole = (function () {
 		}
 	}
 
+	// function to update the remaining time and display the bonus wave
 	chrono = function (){
 		if( !isPaused ){
 			if(gameTimer%20 == 0 && bonusTimer != 2 && gameTimer != 0)
@@ -272,6 +238,7 @@ var whacAMole = (function () {
 		if(gameTimeOut-gameTimer == 0)
 			gameEnd();
 	}
+
 	// make a mole appear randomly
     renderMole = function () {
 		if(!isPaused && bonusTimer == 0){
@@ -405,6 +372,7 @@ var whacAMole = (function () {
 		document.getElementById('instructionScreen').style.display = "block";
 	}
 	
+	// function called when you click on "JOUER" to chose the game mode
 	gameMode = function (){
 		document.getElementById('grid').style.display = "none";
 		document.getElementById('launcher').style.display = "none";
