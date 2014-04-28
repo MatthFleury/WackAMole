@@ -401,6 +401,8 @@ var whacAMole = (function () {
 			document.getElementById('scoreBoardArt').style.display = "none";
 		else if(e == 3)
 			document.getElementById('instructionScreen').style.display = "none";
+		else if(e == 4)
+			document.getElementById('gameMode').style.display = "none";
 
 		document.getElementById('launcher').style.display = "block";
 	}
